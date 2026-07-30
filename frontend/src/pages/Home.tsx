@@ -79,6 +79,11 @@ function Home(){
         weekday:"long",
     });
 
+    //UI용 더미 데이터
+    const completedCount=2;
+    //const totalCount=todayTodos.length;
+    const progress=Math.round((completedCount/todayTodos.length)*100);
+
     return (
 
         <div className="bg-gray-50">
@@ -98,11 +103,27 @@ function Home(){
                     <p className="mt-5 text-sm text-gray-600">
                         오늘 할 일 {todayTodos.length}개 · 최근 메모 {recentMemos.length}개
                     </p>
+                <section className="mt-3">
+                    
+                        <div className="flex items-center justify-between">
+                            <span className="text-sm font-medium text-gray-600">
+                                오늘 진행률 ({completedCount}/{todayTodos.length})
+                            </span>
 
+                            <span className="text-sm font-semibold text-blue-600">
+                                {progress}%
+                            </span>
+                        </div>
+                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-gray-200">
+                            <div className="h-full rounded-full bg-blue-500" style={{width:`${progress}%`}}/>
+                        </div>
+                        
+                   
+                </section>
                     
                 
                 </div>
-                <div className="mt-3 h-px bg-gray-200"/>
+                <div className="mt-6 h-px bg-gray-200"/>
 
                 {/*오늘 할 일*/}
                 <section className="mt-5">
